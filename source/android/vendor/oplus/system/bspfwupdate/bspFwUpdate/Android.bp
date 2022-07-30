@@ -1,0 +1,73 @@
+//******************************************************************************
+//Copyright (C), 2018-2023, OPLUS Mobile Comm Corp., Ltd
+//, All rights reserved.
+//
+//File: - Android.bp
+//Description:
+//   Euclid : bspFwUpdate functions for Android.bp
+//
+// Version: 1.0
+// Date: 2019-01-17
+//
+//------------------------------- Revision History: ----------------------------
+// <author>                        <data>       <version>   <desc>
+//------------------------------------------------------------------------------
+//********************************************************************************
+
+bspfwupdate_src = [
+    "bspFwUpdate.cpp",
+    "rsaVerify.cpp",
+    "pub_key.cpp",
+    "bspFwUpdate_interface.cpp",
+    "touchpanel/touchpanel_update.cpp",
+    "ufs/ufs.cpp",
+    "fastcharger/fastcharger_update.cpp",
+    "test/test_update.cpp",
+]
+
+cc_binary {
+    name: "bspFwUpdate",
+    //Runsheng.Pei add loadframe and oplusex for decouple.
+    include_dirs: [
+        "vendor/oplus/frameworks/native/libs/oplusloadframe",
+        "vendor/oplus/frameworks/native/libs/oplusplugin",],
+    srcs: bspfwupdate_src,
+    cflags: [
+        "-O2",
+        "-g",
+        "-W",
+        "-Wall",
+        "-D_LARGEFILE_SOURCE",
+        "-D_FILE_OFFSET_BITS=64",
+    ],
+    //Runsheng.Pei replace libcritical_log_service with loadframe and oplusex for decouple, and remove libcritical_log_service.
+    shared_libs: [
+        "libc",
+        "libcutils",
+        //"liboplusloadframe",
+        //"liboplusplugin",
+        "libcrypto",
+        "libssl",
+        "liblog",
+        "libcrypto_utils",
+    ],
+}
+
+cc_library_static {
+    name: "libfwupdate",
+    recovery_available: true,
+    srcs: [
+        "bspFwUpdate_interface.cpp",
+        "rsaVerify.cpp",
+        "pub_key.cpp",
+    ],
+
+
+    shared_libs: [
+        "libc",
+        "libcutils",
+        "liblog",
+        "libcrypto_utils",
+        "libcrypto",
+    ],
+}
