@@ -1,0 +1,306 @@
+&mdss_mdp {
+	dsi_oplus22667_cost_ili7807s_fhd_plus_120fps_video: qcom,mdss_dsi_oplus22667_cost_ili7807s_fhd_plus_120fps_video {
+		qcom,mdss-dsi-panel-name =
+			"cost ili7807s 22667 fhd plus mipi panel with DSC";
+		qcom,mdss-dsi-panel-type = "dsi_video_mode";
+		qcom,dsi-ctrl-num = <0>;
+		qcom,dsi-phy-num = <0>;
+		qcom,mdss-dsi-virtual-channel-id = <0>;
+		qcom,mdss-dsi-stream = <0>;
+		qcom,mdss-dsi-bpp = <24>;
+		qcom,mdss-dsi-color-order = "rgb_swap_rgb";
+		qcom,mdss-dsi-underflow-color = <0xff>;
+		qcom,mdss-dsi-border-color = <0>;
+
+		qcom,mdss-dsi-traffic-mode = "burst_mode";
+		qcom,mdss-dsi-bllp-power-mode;
+		qcom,mdss-dsi-bllp-eof-power-mode;
+		qcom,mdss-dsi-lane-0-state;
+		qcom,mdss-dsi-lane-1-state;
+		qcom,mdss-dsi-lane-2-state;
+		qcom,mdss-dsi-lane-3-state;
+		qcom,mdss-dsi-dma-trigger = "trigger_sw";
+		qcom,mdss-dsi-mdp-trigger = "none";
+		qcom,mdss-dsi-reset-sequence = <1 5>, <0 5>, <1 5>;
+		qcom,platform-reset-gpio-always-on;
+
+		qcom,mdss-dsi-wr-mem-start = <0x2C>;
+		qcom,mdss-dsi-wr-mem-continue = <0x3C>;
+
+		qcom,bl-update-flag = "delay_until_first_frame";
+		qcom,mdss-dsi-init-delay-us = <1000>;
+		qcom,mdss-dsi-lp11-init;
+		qcom,ulps-enabled;
+		qcom,suspend-ulps-enabled;
+
+		qcom,mdss-dsi-te-pin-select = <1>;
+		qcom,mdss-dsi-te-dcs-command = <1>;
+		qcom,mdss-dsi-te-check-enable;
+		qcom,mdss-dsi-te-using-te-pin;
+
+		qcom,mdss-pan-physical-width-dimension = <68>;
+		qcom,mdss-pan-physical-height-dimension = <153>;
+
+		qcom,mdss-dsi-display-timings {
+			timing@0 {
+				//qcom,mdss-mdp-transfer-time-us = <7000>;
+				qcom,mdss-dsi-panel-framerate = <120>;
+				qcom,mdss-dsi-panel-width = <1080>;
+				qcom,mdss-dsi-panel-height = <2400>;
+				qcom,mdss-dsi-h-front-porch = <12>;
+				qcom,mdss-dsi-h-back-porch = <14>;
+				qcom,mdss-dsi-h-pulse-width = <4>;
+				qcom,mdss-dsi-h-sync-skew = <0>;
+				qcom,mdss-dsi-v-back-porch = <40>;
+				qcom,mdss-dsi-v-front-porch = <40>;
+				qcom,mdss-dsi-v-pulse-width = <4>;
+				qcom,mdss-dsi-on-command = [
+					39 01 00 00 00 00 04 FF 78 07 06
+					15 01 00 00 00 00 02 08 20
+					15 01 00 00 00 00 02 3E E2
+
+					39 01 00 00 00 00 04 FF 78 07 03
+					15 01 00 00 00 00 02 81 14  //step
+					15 01 00 00 00 00 02 82 15  //step
+					15 01 00 00 00 00 02 83 20
+					15 01 00 00 00 00 02 84 01
+
+					39 01 00 00 00 00 04 FF 78 07 03
+					15 01 00 00 00 00 02 88 DB  //CC Black 80%->86%
+					15 01 00 00 00 00 02 89 E5  //grey 89.84%
+					15 01 00 00 00 00 02 8A ED  //fruit 92.97%
+					15 01 00 00 00 00 02 8B EF
+					15 01 00 00 00 00 02 B3 E5  //desktop 89.84%
+					15 01 00 00 00 00 02 A6 E6	//aw duty1 low
+					15 01 00 00 00 00 02 AC FA  //white 98%   aw duty3 low
+
+					15 01 00 00 00 00 02 A7 F3  //E5  //aw duty1 med
+					15 01 00 00 00 00 02 AD E3  //E0  //white aw duty3 med
+					15 01 00 00 00 00 02 8C AD  //9B black 60.94%->68%
+					15 01 00 00 00 00 02 8D B1  //
+					15 01 00 00 00 00 02 8E B4  //
+					15 01 00 00 00 00 02 8F B7  //
+					15 01 00 00 00 00 02 90 BB  //grey 69.92%->73.44%
+					15 01 00 00 00 00 02 91 BF  //
+					15 01 00 00 00 00 02 92 C3  //
+					15 01 00 00 00 00 02 93 C7  //BA fruit 73%->78.1%
+					15 01 00 00 00 00 02 94 CA
+					15 01 00 00 00 00 02 95 D5
+					15 01 00 00 00 00 02 B4 D9  //desktop 85.2%
+
+					15 01 00 00 00 00 02 A8 EE  //E5  //aw duty1 hi
+					15 01 00 00 00 00 02 AE DE  //D3  //white aw duty3 hi
+					15 01 00 00 00 00 02 96 90  //70 black 44.14%->56.64%
+					15 01 00 00 00 00 02 97 97  //L4-L19
+					15 01 00 00 00 00 02 98 99
+					15 01 00 00 00 00 02 99 9F
+					15 01 00 00 00 00 02 9A A3  //grey 64%
+					15 01 00 00 00 00 02 9B A6
+					15 01 00 00 00 00 02 9C A9
+					15 01 00 00 00 00 02 9D BD  //AD fruit 67.97%->74.2%
+					15 01 00 00 00 00 02 9E C2
+					15 01 00 00 00 00 02 9F CC
+					15 01 00 00 00 00 02 B5 D0  //desktop 81%
+
+					15 01 00 00 00 00 02 A0 C0  //aw thre1 en+low
+					15 01 00 00 00 00 02 A1 7E  //aw thre1 med
+					15 01 00 00 00 00 02 A2 7E  //aw thre1 hi
+					15 01 00 00 00 00 02 B6 00  //boost l
+					15 01 00 00 00 00 02 B7 D0  //boost m
+					15 01 00 00 00 00 02 B8 D0  //boost h
+					15 01 00 00 00 00 02 B1 66  //hsat thre m
+					15 01 00 00 00 00 02 B2 66  //hsat thre h
+					15 01 00 00 00 00 02 86 6C  //thre m
+					15 01 00 00 00 00 02 87 6C  //thre h
+
+					39 01 00 00 00 00 04 FF 78 07 00
+					15 01 00 00 00 00 02 53 24
+					15 01 00 00 00 00 02 35 00
+					05 01 00 00 78 00 01 11
+					05 01 00 00 14 00 01 29
+				];
+				qcom,oplus-mdss-dsi-on-command = [
+					39 01 00 00 00 00 04 FF 78 07 06
+					15 01 00 00 00 00 02 08 20
+					15 01 00 00 00 00 02 3E E2
+
+					39 01 00 00 00 00 04 FF 78 07 03
+					15 01 00 00 00 00 02 81 14  //step
+					15 01 00 00 00 00 02 82 15  //step
+					15 01 00 00 00 00 02 83 20
+					15 01 00 00 00 00 02 84 01
+
+					39 01 00 00 00 00 04 FF 78 07 03
+					15 01 00 00 00 00 02 88 DB  //CC Black 80%->86%
+					15 01 00 00 00 00 02 89 E5  //grey 89.84%
+					15 01 00 00 00 00 02 8A ED  //fruit 92.97%
+					15 01 00 00 00 00 02 8B EF
+					15 01 00 00 00 00 02 B3 E5  //desktop 89.84%
+					15 01 00 00 00 00 02 A6 E6	//aw duty1 low
+					15 01 00 00 00 00 02 AC FA  //white 98%   aw duty3 low
+
+					15 01 00 00 00 00 02 A7 F3  //E5  //aw duty1 med
+					15 01 00 00 00 00 02 AD E3  //E0  //white aw duty3 med
+					15 01 00 00 00 00 02 8C AD  //9B black 60.94%->68%
+					15 01 00 00 00 00 02 8D B1  //
+					15 01 00 00 00 00 02 8E B4  //
+					15 01 00 00 00 00 02 8F B7  //
+					15 01 00 00 00 00 02 90 BB  //grey 69.92%->73.44%
+					15 01 00 00 00 00 02 91 BF  //
+					15 01 00 00 00 00 02 92 C3  //
+					15 01 00 00 00 00 02 93 C7  //BA fruit 73%->78.1%
+					15 01 00 00 00 00 02 94 CA
+					15 01 00 00 00 00 02 95 D5
+					15 01 00 00 00 00 02 B4 D9  //desktop 85.2%
+
+					15 01 00 00 00 00 02 A8 EE  //E5  //aw duty1 hi
+					15 01 00 00 00 00 02 AE DE  //D3  //white aw duty3 hi
+					15 01 00 00 00 00 02 96 90  //70 black 44.14%->56.64%
+					15 01 00 00 00 00 02 97 97  //L4-L19
+					15 01 00 00 00 00 02 98 99
+					15 01 00 00 00 00 02 99 9F
+					15 01 00 00 00 00 02 9A A3  //grey 64%
+					15 01 00 00 00 00 02 9B A6
+					15 01 00 00 00 00 02 9C A9
+					15 01 00 00 00 00 02 9D BD  //AD fruit 67.97%->74.2%
+					15 01 00 00 00 00 02 9E C2
+					15 01 00 00 00 00 02 9F CC
+					15 01 00 00 00 00 02 B5 D0  //desktop 81%
+
+					15 01 00 00 00 00 02 A0 C0  //aw thre1 en+low
+					15 01 00 00 00 00 02 A1 7E  //aw thre1 med
+					15 01 00 00 00 00 02 A2 7E  //aw thre1 hi
+					15 01 00 00 00 00 02 B6 00  //boost l
+					15 01 00 00 00 00 02 B7 D0  //boost m
+					15 01 00 00 00 00 02 B8 D0  //boost h
+					15 01 00 00 00 00 02 B1 66  //hsat thre m
+					15 01 00 00 00 00 02 B2 66  //hsat thre h
+					15 01 00 00 00 00 02 86 6C  //thre m
+					15 01 00 00 00 00 02 87 6C  //thre h
+
+					39 01 00 00 00 00 04 FF 78 07 00
+					15 01 00 00 00 00 02 53 24
+					15 01 00 00 00 00 02 35 00
+					05 01 00 00 78 00 01 11
+					05 01 00 00 14 00 01 29
+				];
+				qcom,mdss-dsi-off-command = [
+					39 01 00 00 01 00 04 FF 78 07 00
+					05 01 00 00 14 00 01 28
+					05 01 00 00 53 00 01 10
+				];
+				qcom,mdss-dsi-post-panel-on-command =[
+					39 01 00 00 00 00 04 FF 78 07 00
+				];
+				qcom,mdss-dsi-cabc-off-command = [
+					39 01 00 00 00 00 04 FF 78 07 00
+					15 01 00 00 00 00 02 55 00
+				];
+				qcom,mdss-dsi-cabc-ui-command = [
+					39 01 00 00 00 00 04 FF 78 07 00
+					15 01 00 00 00 00 02 55 01
+				];
+				qcom,mdss-dsi-cabc-still-image-command = [
+					39 01 00 00 00 00 04 FF 78 07 00
+					15 01 00 00 00 00 02 55 02
+				];
+				qcom,mdss-dsi-cabc-video-command = [
+					39 01 00 00 00 00 04 FF 78 07 00
+					15 01 00 00 00 00 02 55 03
+				];
+				qcom,mdss-dsi-backlight-gamma-enter-command = [
+					39 01 00 00 00 00 04 ff 78 07 08
+					39 01 00 00 00 00 20 e0 15 6d 71 75 15 81 8c 97 15 ab be dd 29 f9 28 56 2a 87 c0 e5 3f 15 37 5e 3f 77 95 be 0f d6 d7
+					39 01 00 00 00 00 20 e1 15 6d 71 75 15 81 8c 97 15 ab be dd 29 f9 28 56 2a 87 c0 e5 3f 15 37 5e 3f 77 95 be 0f d6 d7 
+					39 01 00 00 00 00 04 ff 78 07 00
+				];
+				qcom,mdss-dsi-backlight-gamma-exit-command = [
+					39 01 00 00 00 00 04 ff 78 07 08
+					39 01 00 00 00 00 20 e0 00 00 21 50 00 93 C3 E9 15 21 4C 89 25 B8 FE 37 2A 6D AC D2 3F 04 25 52 3F 6B 8B B7 0F CE D7
+					39 01 00 00 00 00 20 e1 00 00 21 50 00 93 C3 E9 15 21 4C 89 25 B8 FE 37 2A 6D AC D2 3F 04 25 52 3F 6B 8B B7 0F CE D7
+					39 01 00 00 00 00 04 ff 78 07 00
+				];
+
+				qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
+				qcom,oplus-mdss-dsi-on-command-state = "dsi_lp_mode";
+				qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
+				qcom,mdss-dsi-post-panel-on-command-state="dsi_lp_mode";
+				qcom,mdss-dsi-cabc-off-command-state = "dsi_lp_mode";
+				qcom,mdss-dsi-cabc-ui-command-state = "dsi_lp_mode";
+				qcom,mdss-dsi-cabc-still-image-command-state = "dsi_lp_mode";
+				qcom,mdss-dsi-cabc-video-command-state = "dsi_lp_mode";
+				qcom,mdss-dsi-backlight-gamma-enter-command-state = "dsi_hs_mode";
+				qcom,mdss-dsi-backlight-gamma-exit-command-state = "dsi_hs_mode";
+
+				qcom,compression-mode = "dsc";
+				qcom,mdss-dsc-slice-height = <8>;
+				qcom,mdss-dsc-slice-width = <540>;
+				qcom,mdss-dsc-slice-per-pkt = <2>;
+				qcom,mdss-dsc-bit-per-component = <8>;
+				qcom,mdss-dsc-bit-per-pixel = <8>;
+				qcom,mdss-dsc-block-prediction-enable;
+			};
+		};
+	};
+};
+
+&dsi_oplus22667_cost_ili7807s_fhd_plus_120fps_video {
+	oplus,mdss-dsi-manufacture = "dsjm";
+	oplus,mdss-dsi-vendor-name = "JDI_ILI7807S";
+	oplus,mdss-dsi-pre-bl-delay-enabled;
+	oplus,mdss-dsi-pre-bl-delay-ms = <30>;
+	oplus,mdss-dsi-cabc-enabled;
+	oplus,mdss-dsi-gamma-switch-enabled;
+	oplus,mdss-dsi-lp-config-flag;
+	oplus,lcd_switch_enabled;
+	oplus,dfps-idle-off;
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_labibb>;
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
+	qcom,mdss-dsi-bl-min-level = <8>;
+	qcom,mdss-dsi-bl-max-level = <4095>;
+	qcom,mdss-brightness-max-level = <4095>;
+	qcom,mdss-dsi-bl-normal-max-level = <3630>;
+	qcom,mdss-brightness-normal-max-level = <3630>;
+	qcom,mdss-brightness-default-level = <891>;
+	qcom,platform-te-gpio = <&tlmm 23 0>;
+	qcom,platform-reset-gpio = <&tlmm 100 0>;
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0",
+		"src_byte_clk0", "src_pixel_clk0",
+		"shadow_byte_clk0", "shadow_pixel_clk0";
+
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 09];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
+	qcom,mdss-dsi-panel-status-value = <0x80 0x03 0x06>;
+	qcom,mdss-dsi-panel-status-read-length = <3>;
+
+	qcom,mdss-dsi-pan-enable-dynamic-fps;
+	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
+	qcom,dsi-supported-dfps-list = <120 90 60 50 48 30>;
+	qcom,mdss-dsi-qsync-min-refresh-rate = <30>;
+
+	//qcom,dsi-dyn-clk-enable;
+	//qcom,dsi-dyn-clk-type = "constant-fps-adjust-hfp";
+	//qcom,dsi-dyn-clk-list = <1107046080 1117009376>;
+
+
+	qcom,mdss-dsi-t-clk-post = <0x0B>;
+	qcom,mdss-dsi-t-clk-pre = <0x16>;
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [00 1A 06 06 16 14 07
+				06 07 02 04 00 16 0B];
+			qcom,display-topology = <1 1 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+};
+
+&dsi_oplus22667_cost_ili7807s_fhd_plus_120fps_video {
+	qcom,panel_voltage_vddi_name = "vddio";
+	qcom,panel_voltage_vddi = <0 1650000 1800000 1950000>;
+	qcom,panel_voltage_vddr_name = "vddio";
+	qcom,panel_voltage_vddr = <1 1650000 1800000 1950000>;
+};
+
